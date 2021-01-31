@@ -24,34 +24,6 @@ class App extends React.Component {
 
   }
 
-  // componentDidMount(){
-    //window.open(URL, '_blank');
-    // fetch('http://localhost:3001/', {
-    //   mode: 'cors', // no-cors, *cors, same-origin
-    //   cache: 'no-cache',
-    //   credentials: 'same-origin',
-    //   headers: {'Content-Type': 'application/json'},
-    // })
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
-    //   .catch(err => console.log(err));
-
-
-  // }
-
-  // componentDidMount() {
-  //   this.timerID = setInterval(() => 
-  //   this.onTick(), 60000);
-  // }
-
-  // onTick = () =>{
-  //   this.setState({time: new Date()});
-  //   // this.state.events.array.forEach(element => {
-  //   //   if(element.time.toLocaleTimeString().slice(0, 5))
-  //   // });
-
-
-  // }
 
 
 
