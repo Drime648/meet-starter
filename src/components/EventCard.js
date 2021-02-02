@@ -24,7 +24,7 @@ class EventCard extends React.Component {
         super(props);
     }
     onDeleteClicked = () =>{
-        fetch('http://localhost:3001/deleteEvent', {
+        fetch('https://guarded-ocean-62217.herokuapp.com/deleteEvent', {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache',

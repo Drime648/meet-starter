@@ -72,7 +72,7 @@ class EventForm extends React.Component {
     }
 
     onSubmitPress =() => {
-        fetch('http://localhost:3001/addEvent', {
+        fetch('https://guarded-ocean-62217.herokuapp.com/addEvent', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache',
