@@ -24,7 +24,7 @@ class register extends React.Component{
     onSubmitPress = () =>{
         if(this.state.registerUser !== '' && this.state.registerPassword !== ''){
             fetch('https://guarded-ocean-62217.herokuapp.com/register', {
-                method: 'post',
+                method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     userName: this.state.registerUser,

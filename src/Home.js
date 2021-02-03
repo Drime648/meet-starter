@@ -38,7 +38,7 @@ class App extends React.Component {
     // console.log(this.state.userName);
     // console.log(' is the user name');
     // console.log(this.state.day);
-    fetch('https://guarded-ocean-62217.herokuapp.com//getprofile/' + this.state.userName).then(response =>{
+    fetch('https://guarded-ocean-62217.herokuapp.com/getprofile/' + this.state.userName).then(response =>{
       return response.json();
     })
     .then(eventData =>{
