@@ -2,29 +2,13 @@ import React from 'react';
 import './EventCard.css';
 import DeleteButton from './deleteButton.png';
 
-// const EventCard =({title, actionTime, id}) =>{ 
-//     return (
-//         <article className =" grow br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
-
-//             <div className = 'bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5 tc'>
-//                 <div>
-//                     <h2> {title} </h2>
-//                     <p> {actionTime} </p>
-//                     <deleteButton id = {id}/>
-
-//                 </div>
-// 		    </div>
-//         </article>
-
-//     );
-// }
 
 class EventCard extends React.Component {
     constructor(props) {
         super(props);
     }
     onDeleteClicked = () =>{
-        fetch('https://guarded-ocean-62217.herokuapp.com/deleteEvent', {
+        fetch('https://mighty-river-01892.herokuapp.com/deleteEvent', {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache',

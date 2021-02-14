@@ -38,7 +38,7 @@ class App extends React.Component {
     // console.log(this.state.userName);
     // console.log(' is the user name');
     // console.log(this.state.day);
-    fetch('https://guarded-ocean-62217.herokuapp.com/getprofile/' + this.state.userName).then(response =>{
+    fetch('https://mighty-river-01892.herokuapp.com/getprofile/' + this.state.userName).then(response =>{
       return response.json();
     })
     .then(eventData =>{
@@ -81,7 +81,7 @@ class App extends React.Component {
         (day === 5 && array[i].fri) ||
         (day === 6 && array[i].sat)){
           //check event times
-          if(array[i].actionTime.slice(0, 5) === this.state.time.toTimeString().slice(0, 5)){
+          if(array[i].actiontime.slice(0, 5) === this.state.time.toTimeString().slice(0, 5)){
             window.open(array[i].url);
             console.log(array[i].password);
             copy(array[i].password);

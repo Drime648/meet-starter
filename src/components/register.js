@@ -23,7 +23,7 @@ class register extends React.Component{
 
     onSubmitPress = () =>{
         if(this.state.registerUser !== '' && this.state.registerPassword !== ''){
-            fetch('https://guarded-ocean-62217.herokuapp.com/register', {
+            fetch('https://mighty-river-01892.herokuapp.com/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -42,7 +42,7 @@ class register extends React.Component{
             })
             .catch(err => console.log(err));
 
-            this.props.onRouteChange('signIn');
+            this.props.onRouteChange('signin');
         }
     }
 
