@@ -8,7 +8,7 @@ class EventForm extends React.Component {
         this.state = {
             title: '',
             url: '',
-            launchTime: '00:00:00',
+            launchTime: '',
             password: '',
             mon: false,
             tue: false,
@@ -73,42 +73,44 @@ class EventForm extends React.Component {
     }
 
     onSubmitPress =() => {
-        fetch('https://mighty-river-01892.herokuapp.com/addEvent', {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {'Content-Type': 'application/json'},
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-            body: JSON.stringify({
-                userName: this.props.userName,
-                title: this.state.title,
-                url: this.state.url,
-                actionTime: this.state.launchTime,
-                password: this.state.password,
-                mon: this.state.mon,
-                tue: this.state.tue,
-                wed: this.state.wed,
-                thu: this.state.thu,
-                fri: this.state.fri,
-                sat: this.state.sat,
-                sun: this.state.sun
+        if(this.state.launchTime != ''){
+            fetch('https://mighty-river-01892.herokuapp.com/addEvent', {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {'Content-Type': 'application/json'},
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify({
+                    userName: this.props.userName,
+                    title: this.state.title,
+                    url: this.state.url,
+                    actionTime: this.state.launchTime,
+                    password: this.state.password,
+                    mon: this.state.mon,
+                    tue: this.state.tue,
+                    wed: this.state.wed,
+                    thu: this.state.thu,
+                    fri: this.state.fri,
+                    sat: this.state.sat,
+                    sun: this.state.sun
 
+                })
             })
-        })
-        .then(response =>{
-            return response.json();
-        })
-        .then(data => {
-            if(data === 'success'){
-                this.setState({load: false});
-                this.props.onRouteChange('loading');
-            }
-        })
-        .catch(err => console.log(err));
+            .then(response =>{
+                return response.json();
+            })
+            .then(data => {
+                if(data === 'success'){
+                    this.setState({load: false});
+                    this.props.onRouteChange('loading');
+                }
+            })
+            .catch(err => console.log(err));
 
-        this.setState({load: true});
+            this.setState({load: true});
+        }
     }
 
     onBackClicked = () => {
