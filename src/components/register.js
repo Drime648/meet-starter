@@ -8,7 +8,8 @@ class register extends React.Component{
         super(props);
         this.state = {
             registerUser: '',
-            registerPassword: ''
+            registerPassword: '',
+            load: false
 
         }
     }
@@ -34,20 +35,26 @@ class register extends React.Component{
                 return res.json()
             })
             .then(data => {
-                if(data === 'fail'){
-                    this.props.onRouteChange('register')
+                if(data === 'success'){
+                    this.props.setUser(this.state.registerUser);
+                    this.props.onRouteChange('loading');
+                } else {
+                    this.setState({load: false})
                 }
 
             })
             .catch(err => console.log(err));
+            this.setState({load: true});
 
-            this.props.onRouteChange('signin');
         }
     }
 
     render(){
         return (
-            <form className = "measure center" action="sign-up_submit" method="get" acceptCharset="utf-8">
+            <div>
+                {this.state.load
+                    ?<p></p>
+                    :<form className = "measure center" action="sign-up_submit" method="get" acceptCharset="utf-8">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="tc f4 fw6 ph0 mh0 tc">Register</legend>
                     <div className="mt3">
@@ -76,6 +83,8 @@ class register extends React.Component{
                     value="Register"/>
                 </div>
             </form>
+                }
+            </div>
         )
 
     }

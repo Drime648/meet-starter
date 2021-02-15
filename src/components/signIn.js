@@ -9,7 +9,7 @@ class signIn extends React.Component {
         this.state = {
             signInUser: '',
             signInPassword: '',
-            signInFinish: false
+            load: false
 
         }
     }
@@ -43,15 +43,16 @@ class signIn extends React.Component {
             .then(data => {
                 console.log(data);
                 // signCheck = data;
-                if(data === 'fail'){
-                    this.props.onRouteChange('signin');
-                    this.props.setUser('');
+                if(data === 'success'){
+                    this.props.setUser(this.state.signInUser);
+                    this.props.onRouteChange('loading');
+                } else {
+                    this.setState({load: false})
                 }
             
             })
             .catch(err => console.log(err))
-            this.props.setUser(this.state.signInUser);
-            this.props.onRouteChange('loading');
+            this.setState({load: true})
         }
     }
 
@@ -59,12 +60,11 @@ class signIn extends React.Component {
 
     render() {
         var {onRouteChange} = this.props;
-        if(this.state.signInFinish){
-            this.props.onRouteChange('home');
-        }
         return(
-            // <article className = "br2 ba dark-gray b--black-10 mv4 w-100 w-50 w-25-1 mw5 center">
-                <main className="pa4 black-80">
+            <div>
+                {this.state.load
+                    ?<p></p>
+                    :<main className="pa4 black-80">
                     <form className="measure center">
                         {/* <fieldset id="sign_up" className="ba b--transparent ph0 mh0"/> */}
                         <legend className="tc f4 fw6 ph0 mh0">Sign In</legend>
@@ -100,8 +100,8 @@ class signIn extends React.Component {
                         </div>
                     </form>
                 </main>
-            // </article>
-    
+                }
+            </div>
         );
 
     }
