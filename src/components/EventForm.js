@@ -16,7 +16,8 @@ class EventForm extends React.Component {
             thu: false,
             fri: false,
             sat: false,
-            sun: false
+            sun: false,
+            load: false
 
             
 
@@ -98,10 +99,16 @@ class EventForm extends React.Component {
         })
         .then(response =>{
             return response.json();
-          })
+        })
+        .then(data => {
+            if(data === 'success'){
+                this.setState({load: false});
+                this.props.onRouteChange('loading');
+            }
+        })
         .catch(err => console.log(err));
 
-        this.props.onRouteChange('loading');
+        this.setState({load: true});
     }
 
     onBackClicked = () => {
@@ -117,98 +124,102 @@ class EventForm extends React.Component {
 
 
     render(){
+        
         return(
-            <main className="pa4 black-80">
-                <img alt = 'backButton' src = {BackButton} onClick = {() => this.onBackClicked()}/>
+            <div>
+                {this.state.load
+                    ?<p></p>
+                    :<main className="pa4 black-80">
+                        <img alt = 'backButton' src = {BackButton} onClick = {() => this.onBackClicked()}/>
 
-                <form className="measure center">
-                    <div className="mv3">
-                        <label className="db fw6 lh-copy f6" htmlFor="title">Class Name</label>
-                        <input 
-                        onChange = {this.onTitleChange}
-                        className="b pa2 input-reset ba bg-transparent w-100" 
-                        type="text"
-                        name="title"  
-                        id="title"/>
-                    </div>
+                        <form className="measure center">
+                            <div className="mv3">
+                                <label className="db fw6 lh-copy f6" htmlFor="title">Class Name</label>
+                                <input 
+                                onChange = {this.onTitleChange}
+                                className="b pa2 input-reset ba bg-transparent w-100" 
+                                type="text"
+                                name="title"  
+                                id="title"/>
+                            </div>
 
 
-                    <div className="mv3">
-                        <label className="db fw6 lh-copy f6" htmlFor="url">Meeting URL</label>
-                        <input 
-                        onChange = {this.onUrlChange}
-                        className="b pa2 input-reset ba bg-transparent w-100" 
-                        type="url"
-                        name="url"  
-                        id="url"/>
-                        
-                    </div>
+                            <div className="mv3">
+                                <label className="db fw6 lh-copy f6" htmlFor="url">Meeting URL</label>
+                                <input 
+                                onChange = {this.onUrlChange}
+                                className="b pa2 input-reset ba bg-transparent w-100" 
+                                type="url"
+                                name="url"  
+                                id="url"/>
+                                
+                            </div>
 
-                    <div className="mv3">
-                        <label className="db fw6 lh-copy f6" htmlFor="password">Meeting Password</label>
-                        <input 
-                        onChange = {this.onPasswordChange}
-                        className="b pa2 input-reset ba bg-transparent w-100" 
-                        type="text"
-                        name="password"  
-                        id="password"/>
-                        
-                    </div>
+                            <div className="mv3">
+                                <label className="db fw6 lh-copy f6" htmlFor="password">Meeting Password</label>
+                                <input 
+                                onChange = {this.onPasswordChange}
+                                className="b pa2 input-reset ba bg-transparent w-100" 
+                                type="text"
+                                name="password"  
+                                id="password"/>
+                                
+                            </div>
 
-                    <div className="mv3">
-                        <label className="db fw6 lh-copy f6" htmlFor="launch time">meeting launch time</label>
-                        <input 
-                        onChange = {this.onTimeChange}
-                        className="b pa2 input-reset ba bg-transparent w-100" 
-                        type="time"
-                        name="launch time"  
-                        id="launch time"/>
-                    </div>
+                            <div className="mv3">
+                                <label className="db fw6 lh-copy f6" htmlFor="launch time">meeting launch time</label>
+                                <input 
+                                onChange = {this.onTimeChange}
+                                className="b pa2 input-reset ba bg-transparent w-100" 
+                                type="time"
+                                name="launch time"  
+                                id="launch time"/>
+                            </div>
 
-                    <div>
-                        <div className="pa4">
-                            <fieldset id="favorite_movies" className="bn">
-                                <legend className="fw7 mb2">Days</legend>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="monday" value="monday" onClick = {() => this.onMonChange()}/>
-                                <label htmlFor="monday" className="lh-copy">Monday</label>
+                            <div>
+                                <div className="pa4">
+                                    <fieldset id="favorite_movies" className="bn">
+                                        <legend className="fw7 mb2">Days</legend>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="monday" value="monday" onClick = {() => this.onMonChange()}/>
+                                        <label htmlFor="monday" className="lh-copy">Monday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="tuesday" value="tuesday" onClick = {() => this.onTueChange()}/>
+                                        <label htmlFor="tuesday" className="lh-copy">Tuesday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="wednesday" value="wednesday" onClick = {() => this.onWedChange()}/>
+                                        <label htmlFor="wednesday" className="lh-copy">Wednesday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="thursday" value="thursday" onClick = {() => this.onThuChange()}/>
+                                        <label htmlFor="thursday" className="lh-copy">Thursday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="friday" value="friday" onClick = {() => this.onFriChange()}/>
+                                        <label htmlFor="friday" className="lh-copy">Friday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="saturday" value="saturday" onClick = {() => this.onSatChange()}/>
+                                        <label htmlFor="saturday" className="lh-copy">Saturday</label>
+                                        </div>
+                                        <div className="flex items-center mb2">
+                                        <input className="mr2" type="checkbox" id="sunday" value="sunday" onClick = {() => this.onSunChange()}/>
+                                        <label htmlFor="sunday" className="lh-copy">Sunday</label>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="tuesday" value="tuesday" onClick = {() => this.onTueChange()}/>
-                                <label htmlFor="tuesday" className="lh-copy">Tuesday</label>
-                                </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="wednesday" value="wednesday" onClick = {() => this.onWedChange()}/>
-                                <label htmlFor="wednesday" className="lh-copy">Wednesday</label>
-                                </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="thursday" value="thursday" onClick = {() => this.onThuChange()}/>
-                                <label htmlFor="thursday" className="lh-copy">Thursday</label>
-                                </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="friday" value="friday" onClick = {() => this.onFriChange()}/>
-                                <label htmlFor="friday" className="lh-copy">Friday</label>
-                                </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="saturday" value="saturday" onClick = {() => this.onSatChange()}/>
-                                <label htmlFor="saturday" className="lh-copy">Saturday</label>
-                                </div>
-                                <div className="flex items-center mb2">
-                                <input className="mr2" type="checkbox" id="sunday" value="sunday" onClick = {() => this.onSunChange()}/>
-                                <label htmlFor="sunday" className="lh-copy">Sunday</label>
-                                </div>
-                            </fieldset>
-                        </div>
 
-                    </div>
+                            </div>
 
-                    <div className = "center">
-                        <input 
-                        className="center b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                        type="submit" 
-                        value="Submit"
-                        onClick = {() => this.onSubmitPress()}/>
-                    </div>
+                            <div className = "center">
+                                <input 
+                                className="center b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                                type="submit" 
+                                value="Submit"
+                                onClick = {() => this.onSubmitPress()}/>
+                            </div>
 
 
 
@@ -216,8 +227,10 @@ class EventForm extends React.Component {
 
 
 
-                </form>
-            </main>
+                        </form>
+                    </main>
+                }
+            </div>
 
 
 

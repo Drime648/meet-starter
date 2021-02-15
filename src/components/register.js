@@ -30,8 +30,7 @@ class register extends React.Component{
                     userName: this.state.registerUser,
                     password: this.state.registerPassword
                 })
-            })
-            .then(res => {
+            }).then(res => {
                 return res.json()
             })
             .then(data => {

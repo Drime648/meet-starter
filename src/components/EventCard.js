@@ -6,6 +6,9 @@ import DeleteButton from './deleteButton.png';
 class EventCard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            load: false
+        }
     }
     onDeleteClicked = () =>{
         fetch('https://mighty-river-01892.herokuapp.com/deleteEvent', {
@@ -22,13 +25,23 @@ class EventCard extends React.Component {
         }).then(response =>{
             return response.json();
         })
-        this.props.onRouteChange('loading');
+        .then(data =>{
+            if(data === 'success'){
+                this.setState({load: false});
+                this.props.onRouteChange('loading');
+            }
+        })
+        this.setState({load: true})
+      
 
     }
 
     render(){
         return (
-            <article className =" grow br2 ba dark-gray b--black-10 mv4  w-25-l mw5 center grow">
+            <div>
+            {this.state.load
+            ? <p></p>
+            : <article className =" grow br2 ba dark-gray b--black-10 mv4  w-25-l mw5 center grow">
             
                 <div id = "parent" className = 'bg-light-blue dib br3 pa3 ma2 bw2 shadow-5 tc'>
                     <div id = "wide">
@@ -41,6 +54,8 @@ class EventCard extends React.Component {
                     </div>
                 </div>
             </article>  
+            }
+            </div>
         );
 
     }
