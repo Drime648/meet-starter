@@ -5,6 +5,10 @@ class Loading extends React.Component {
         super(props);
     }
     componentDidMount(){
+        this.timerID = setInterval(() => this.onTick(), 2000);
+    }
+
+    onTick = () => {
         this.props.onRouteChange('home');
     }
     render(){
