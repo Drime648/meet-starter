@@ -8,7 +8,7 @@ class EventForm extends React.Component {
         this.state = {
             title: '',
             url: '',
-            launchTime: '',
+            launchTime: '00:00:00',
             password: '',
             mon: false,
             tue: false,
