@@ -73,7 +73,7 @@ class EventForm extends React.Component {
     }
 
     onSubmitPress =() => {
-        if(this.state.launchTime != ''){
+        if(this.state.launchTime !== ''){
             fetch('https://mighty-river-01892.herokuapp.com/addEvent', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -110,6 +110,8 @@ class EventForm extends React.Component {
             .catch(err => console.log(err));
 
             this.setState({load: true});
+        } else{
+            this.props.onRouteChange('loading');
         }
     }
 
