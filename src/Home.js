@@ -83,7 +83,7 @@ class App extends React.Component {
           //check event times
           if(array[i].actiontime.slice(0, 5) === this.state.time.toTimeString().slice(0, 5)){
             window.open(array[i].url);
-            console.log(array[i].password);
+            // console.log(array[i].password);
             copy(array[i].password);
           }
 

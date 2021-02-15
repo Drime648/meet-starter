@@ -2,7 +2,6 @@ import React from 'react';
 import './EventCard.css';
 import DeleteButton from './deleteButton.png';
 
-
 class EventCard extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +35,12 @@ class EventCard extends React.Component {
 
     }
 
+
+    onJoinPress = () =>{
+        window.open(this.props.url);
+        
+    }
+
     render(){
         return (
             <div>
@@ -50,7 +55,14 @@ class EventCard extends React.Component {
                         <p>password: {this.props.password}</p>
                     </div>
                     <div id = "narrow">
-                        <img alt = 'deleteButton' src = {DeleteButton} onClick = {() => this.onDeleteClicked()}/>
+                        <img alt = 'deleteButton' className = "pointer" src = {DeleteButton} onClick = {() => this.onDeleteClicked()}/>
+                        <br></br>
+                        <br></br>
+                        <input 
+                            className=" b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" 
+                            type="submit" 
+                            value="Join"
+                            onClick = {() => this.onJoinPress()}/>
                     </div>
                 </div>
             </article>  
