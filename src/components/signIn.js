@@ -35,7 +35,8 @@ class signIn extends React.Component {
                 referrerPolicy: 'no-referrer',
                 body: JSON.stringify({
                     userName: this.state.signInUser,
-                    password: this.state.signInPassword
+                    password: this.state.signInPassword,
+                    key: process.env.REACT_APP_KEY
                 })
             })
             .then(response => {

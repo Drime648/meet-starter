@@ -19,7 +19,8 @@ class EventCard extends React.Component {
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
             body: JSON.stringify({
-                id: this.props.id
+                id: this.props.id,
+                key: process.env.REACT_APP_KEY
             })
         }).then(response =>{
             return response.json();

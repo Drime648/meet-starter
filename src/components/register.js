@@ -30,7 +30,8 @@ class register extends React.Component{
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     userName: this.state.registerUser,
-                    password: this.state.registerPassword
+                    password: this.state.registerPassword,
+                    key: process.env.REACT_APP_KEY
                 })
             }).then(res => {
                 return res.json()

@@ -38,7 +38,7 @@ class App extends React.Component {
     // console.log(this.state.userName);
     // console.log(' is the user name');
     // console.log(this.state.day);
-    fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName).then(response =>{
+    fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName + '/' + process.env.REACT_APP_KEY).then(response =>{
       return response.json();
     })
     .then(eventData =>{
