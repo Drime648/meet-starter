@@ -52,7 +52,10 @@ class EventCard extends React.Component {
                     <div id = "wide">
                         <h2> {this.props.title} </h2>
                         <p> {this.props.actionTime} </p>
-                        <p>password: {this.props.password}</p>
+                        {(this.props.password !== '')
+                        ?<p>password: {this.props.password}</p>
+                        :<p></p>
+                        }
                     </div>
                     <div id = "narrow">
                         <img alt = 'deleteButton' className = "pointer grow" src = {DeleteButton} onClick = {() => this.onDeleteClicked()}/>
