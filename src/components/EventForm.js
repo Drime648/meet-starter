@@ -111,7 +111,7 @@ class EventForm extends React.Component {
 
             this.setState({load: true});
         } else{
-            this.props.onRouteChange('loading');
+            this.props.onRouteChange('home');
         }
     }
 
@@ -224,6 +224,9 @@ class EventForm extends React.Component {
                                 value="Submit"
                                 onClick = {() => this.onSubmitPress()}/>
                             </div>
+
+                            <br></br>
+                            <p>Make sure to add a time to start the meeting!</p>
 
 
 

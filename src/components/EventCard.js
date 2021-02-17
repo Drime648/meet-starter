@@ -10,7 +10,7 @@ class EventCard extends React.Component {
         }
     }
     onDeleteClicked = () =>{
-        fetch('https://mighty-river-01892.herokuapp.com/deleteEvent', {
+        fetch(process.env.REACT_APP_API_SITE + '/deleteEvent', {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache',
@@ -55,11 +55,11 @@ class EventCard extends React.Component {
                         <p>password: {this.props.password}</p>
                     </div>
                     <div id = "narrow">
-                        <img alt = 'deleteButton' className = "pointer" src = {DeleteButton} onClick = {() => this.onDeleteClicked()}/>
+                        <img alt = 'deleteButton' className = "pointer grow" src = {DeleteButton} onClick = {() => this.onDeleteClicked()}/>
                         <br></br>
                         <br></br>
                         <input 
-                            className=" b ph3 pv2 input-reset ba b--black bg-transparent pointer f6 dib" 
+                            className=" b ph3 pv2 input-reset ba b--black bg-transparent pointer grow f6 dib" 
                             type="submit" 
                             value="Join"
                             onClick = {() => this.onJoinPress()}/>

@@ -38,7 +38,7 @@ class App extends React.Component {
     // console.log(this.state.userName);
     // console.log(' is the user name');
     // console.log(this.state.day);
-    fetch('https://mighty-river-01892.herokuapp.com/getprofile/' + this.state.userName).then(response =>{
+    fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName).then(response =>{
       return response.json();
     })
     .then(eventData =>{

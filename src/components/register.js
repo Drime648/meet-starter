@@ -9,7 +9,8 @@ class register extends React.Component{
         this.state = {
             registerUser: '',
             registerPassword: '',
-            load: false
+            load: false,
+            failed: false
 
         }
     }
@@ -24,7 +25,7 @@ class register extends React.Component{
 
     onSubmitPress = () =>{
         if(this.state.registerUser !== '' && this.state.registerPassword !== ''){
-            fetch('https://mighty-river-01892.herokuapp.com/register', {
+            fetch(process.env.REACT_APP_API_SITE + '/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -40,6 +41,7 @@ class register extends React.Component{
                     this.props.onRouteChange('loading');
                 } else {
                     this.setState({load: false})
+                    this.setState({failed: true})
                 }
 
             })
@@ -81,6 +83,13 @@ class register extends React.Component{
                     className ="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" 
                     type="submit" 
                     value="Register"/>
+                </div>
+                <br></br>
+                <div>
+                    {(this.state.failed)
+                        ?<p>Try a different username!</p>
+                        :<p></p>
+                    }
                 </div>
             </form>
                 }

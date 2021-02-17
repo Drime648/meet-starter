@@ -9,7 +9,8 @@ class signIn extends React.Component {
         this.state = {
             signInUser: '',
             signInPassword: '',
-            load: false
+            load: false,
+            failed: false
 
         }
     }
@@ -24,7 +25,7 @@ class signIn extends React.Component {
 
      onSubmitPress =() => {
         if(this.state.signInUser !== '' && this.state.signInPassword !== ''){
-            fetch('https://mighty-river-01892.herokuapp.com/login', {
+            fetch(process.env.REACT_APP_API_SITE + '/login', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache',
@@ -48,6 +49,7 @@ class signIn extends React.Component {
                     this.props.onRouteChange('loading');
                 } else {
                     this.setState({load: false})
+                    this.setState({failed: true});
                 }
             
             })
@@ -98,9 +100,16 @@ class signIn extends React.Component {
                         <div className="lh-copy mt3 pointer">
                             <p className="f6 link dim black db" onClick = {() => onRouteChange('register')}>Register</p>
                         </div>
+                        <br></br>
+                        <br></br>
+                        {this.state.failed
+                        ?<p className = "red">username/password is incorrect</p>
+                        :<p></p>
+                        }
                     </form>
                 </main>
                 }
+
             </div>
         );
 
