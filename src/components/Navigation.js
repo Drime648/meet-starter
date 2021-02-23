@@ -1,16 +1,5 @@
 import React from 'react';
-
-// const Navigation =({onRouteChange, setUser}) =>{ 
-
-
-//     return (
-//         <nav style = {{display: 'flex', justifyContent: 'flex-end'}}>
-//             <p onClick = {this.reset} 
-//                 className = ' grow f1 link dim black underline pa3 pointer'>Sign Out</p>
-//         </nav>
-
-//     );
-// }
+import './Navigation.css';
 
 class Navigation extends React.Component {
     constructor(props){
@@ -25,7 +14,7 @@ class Navigation extends React.Component {
         return (
             <nav style = {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p onClick = {this.reset} 
-                    className = ' grow f1 link dim black underline pa3 pointer'>Sign Out</p>
+                    className = ' grow f2 link pr4 underline shadow-1 dim black underline pa5 pointer'>Sign Out</p>
             </nav>
         );
 
