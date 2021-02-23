@@ -66,13 +66,13 @@ class signIn extends React.Component {
         return(
             <div>
                 {this.state.load
-                    ?   <div>
+                    ?   <div className = "dead-center">
                             <Loader
                                 type="TailSpin"
                                 color="#5e5d63"
-                                height={200}
-                                width={200}
-                                className = "deadCenter"
+                                height={400}
+                                width={400}
+                                className = "dead-center"
                                 />
                         </div>
                     :<main className="pa4 black-80">

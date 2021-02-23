@@ -111,8 +111,8 @@ class App extends React.Component {
         <div> 
             <Navigation onRouteChange = {this.props.onRouteChange} setUser = {this.props.setUser}/>
             <div className = 'tc pa4 black-80 App'>
-              <div className = "">
-                <img alt = 'addButton' src = {AddButton} onClick = {() => this.onAddClicked()} className = "pointer pa4 black-80 measure center"/>
+              <div className = "image-container">
+                <img alt = 'addButton' src = {AddButton} onClick = {() => this.onAddClicked()} className = "pointer grow"/>
               </div>
               <SearchBox searchChange = {this.onSearchChange}/>
               <Scroll>
