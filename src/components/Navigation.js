@@ -14,7 +14,7 @@ class Navigation extends React.Component {
         return (
             <nav style = {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p onClick = {this.reset} 
-                    className = ' grow f2 link pr4 underline shadow-1 dim black underline pa5 pointer'>Sign Out</p>
+                    className = ' big grow f2 link pr4 underline shadow-1 dim black underline pa5 pointer'>Sign Out</p>
             </nav>
         );
 
