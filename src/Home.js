@@ -6,7 +6,7 @@ import SearchBox from './components/SearchBox';
 import EventCardList from './components/EventCardList';
 import Scroll from './components/Scroll';
 import copy from "copy-to-clipboard";
-
+import './Home.css';
 
 class App extends React.Component {
 
@@ -53,14 +53,14 @@ class App extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
-  copyToClipboard = (copyText) => {
-    var textField = document.createElement('textarea')
-    textField.innerText = copyText
-    document.body.appendChild(textField)
-    textField.select()
-    document.execCommand('copy')
-    textField.remove()
-  }
+  // copyToClipboard = (copyText) => {
+  //   var textField = document.createElement('textarea')
+  //   textField.innerText = copyText
+  //   document.body.appendChild(textField)
+  //   textField.select()
+  //   document.execCommand('copy')
+  //   textField.remove()
+  // }
 
 
   
@@ -84,7 +84,7 @@ class App extends React.Component {
           if(array[i].actiontime.slice(0, 5) === this.state.time.toTimeString().slice(0, 5)){
             window.open(array[i].url);
             // console.log(array[i].password);
-            copy(array[i].password);
+            // copy(array[i].password);
           }
 
           
@@ -110,8 +110,10 @@ class App extends React.Component {
     return (
         <div> 
             <Navigation onRouteChange = {this.props.onRouteChange} setUser = {this.props.setUser}/>
-            <div className = 'tc pa4 black-80 center App'>
-              <img alt = 'addButton' src = {AddButton} onClick = {() => this.onAddClicked()}/>
+            <div className = 'tc pa4 black-80 App'>
+              <div className = "">
+                <img alt = 'addButton' src = {AddButton} onClick = {() => this.onAddClicked()} className = "pointer pa4 black-80 measure center"/>
+              </div>
               <SearchBox searchChange = {this.onSearchChange}/>
               <Scroll>
                 <EventCardList events = {filteredEvents} onRouteChange = {this.props.onRouteChange}/>

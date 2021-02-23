@@ -1,6 +1,6 @@
 import React from 'react';
 import './signIn.css';
-
+import Loader from "react-loader-spinner";
 
 class signIn extends React.Component {
 
@@ -66,7 +66,15 @@ class signIn extends React.Component {
         return(
             <div>
                 {this.state.load
-                    ?<p></p>
+                    ?   <div>
+                            <Loader
+                                type="TailSpin"
+                                color="#5e5d63"
+                                height={200}
+                                width={200}
+                                className = "deadCenter"
+                                />
+                        </div>
                     :<main className="pa4 black-80">
                     <form className="measure center">
                         {/* <fieldset id="sign_up" className="ba b--transparent ph0 mh0"/> */}

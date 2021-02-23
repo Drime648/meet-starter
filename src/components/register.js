@@ -1,6 +1,6 @@
 import React from 'react';
 import './register.css';
-
+import Loader from "react-loader-spinner";
 
 class register extends React.Component{
 
@@ -56,7 +56,15 @@ class register extends React.Component{
         return (
             <div>
                 {this.state.load
-                    ?<p></p>
+                        ?<div>
+                            <Loader
+                                type="TailSpin"
+                                color="#5e5d63"
+                                height={200}
+                                width={200}
+                                className = "deadCenter"
+                            />
+                        </div>
                     :<form className = "measure center" action="sign-up_submit" method="get" acceptCharset="utf-8">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="tc f4 fw6 ph0 mh0 tc">Register</legend>

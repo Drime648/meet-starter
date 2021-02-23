@@ -3,6 +3,22 @@
     border-width: 1px;
 }
 
+.deadCenter {
+    position: absolute;
+    top: 35%; 
+    margin-top:-100px;
+    left: 35%; 
+    margin-left:-200px;
+}
+
+.Loader{
+    margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+}
+
+
 .b--black {
     border-color: #100;
 }
