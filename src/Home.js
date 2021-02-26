@@ -5,7 +5,8 @@ import AddButton from './components/addButton.png';
 import SearchBox from './components/SearchBox';
 import EventCardList from './components/EventCardList';
 import Scroll from './components/Scroll';
-import copy from "copy-to-clipboard";
+import TaskList from './components/taskList';
+
 import './Home.css';
 
 class App extends React.Component {
@@ -17,7 +18,39 @@ class App extends React.Component {
       day: '',
       events: [],
       time: new Date(),
-      searchField: ''
+      searchField: '',
+      taskField: '',
+      tasks: []
+    }
+  }
+
+  enterPress = (event) => {
+    if (event.keyCode === 13 && !/^\s*$/.test(this.state.taskField)) {
+      fetch('https://mighty-river-01892.herokuapp.com/addTask', {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {'Content-Type': 'application/json'},
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify({
+                    username: this.state.userName,
+                    task: this.state.taskField
+                    
+                })
+            })
+            .then(response =>{
+                return response.json();
+            })
+            .then(data => {
+                if(data === 'success'){
+                    this.props.onRouteChange('loading');
+                }
+            })
+            .catch(err => console.log(err));
+
+            this.setState({taskField: ''});
     }
   }
 
@@ -32,6 +65,10 @@ class App extends React.Component {
 		this.setState({searchField: event.target.value});
 	}
 
+  onTaskChange = (event) => {
+    this.setState({taskField: event.target.value});
+  }
+
 
 
   componentDidMount() {
@@ -45,6 +82,15 @@ class App extends React.Component {
       this.setState({events: eventData})
       console.log(eventData);
     })
+
+    fetch(process.env.REACT_APP_API_SITE +'/getTasks/' + this.state.userName).then(response => {
+      return response.json();
+    })
+    .then(taskData => {
+      this.setState({tasks: taskData})
+    }) 
+
+    
 
     this.timerID = setInterval(() => this.onTick(), 60000);
 		
@@ -95,6 +141,7 @@ class App extends React.Component {
 
 
 
+
     
 
 
@@ -109,6 +156,21 @@ class App extends React.Component {
 
     return (
         <div> 
+            <nav className="navbar">
+              <ul className="navbar-nav">
+                <span>
+                  <input
+                  className = "nav-item text-item pa2 input-reset ba bg-transparent white w-100"
+                      aria-hidden="true"
+                      onKeyDown={(e) => this.enterPress(e)}
+                      onChange = {this.onTaskChange}
+                      >
+                  </input>
+                  <TaskList tasks = {this.state.tasks} onRouteChange = {this.props.onRouteChange}/>
+
+                </span>
+              </ul>
+            </nav>
             <Navigation onRouteChange = {this.props.onRouteChange} setUser = {this.props.setUser}/>
             <div className = 'tc pa4 black-80 App'>
               <div className = "image-container">

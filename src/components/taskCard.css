@@ -1,0 +1,39 @@
+.white {
+    color:#f3f3f3
+}
+
+.hover-white:hover {
+    color: #fff;
+}
+
+.hover-white:focus {
+    color: #fff;
+}
+
+.center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+
+
+/* span {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  } */
+
+  li {
+    margin-left: -1rem;
+    list-style-type : none;
+  }
+  
+
+  
+  span:hover {
+    text-decoration: line-through;
+  }

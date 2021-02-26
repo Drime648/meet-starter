@@ -1,3 +1,53 @@
 .image-container{
     text-align: center;
 }
+
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+  }
+
+  
+  main {
+    margin-left: 5rem;
+    padding: 1rem;
+  }
+.navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    transition: width 600ms ease;
+    overflow-Y: scroll;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 15%
+  }
+
+
+
+.text-item {
+    text-align: center;
+    margin-left: -2rem
+}
+
+.white:hover {
+    color: #fff;
+}
+
+.white:focus {
+    color: #fff;
+}
+
+
+.white{
+    color: rgb(255, 255, 255);
+}
