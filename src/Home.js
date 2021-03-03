@@ -74,9 +74,6 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    // console.log(this.state.userName);
-    // console.log(' is the user name');
-    // console.log(this.state.day);
     fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName + '/' + this.state.apikey).then(response =>{
       return response.json();
     })
@@ -101,15 +98,6 @@ class App extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
-  // copyToClipboard = (copyText) => {
-  //   var textField = document.createElement('textarea')
-  //   textField.innerText = copyText
-  //   document.body.appendChild(textField)
-  //   textField.select()
-  //   document.execCommand('copy')
-  //   textField.remove()
-  // }
-
 
   
   onTick = () =>{
@@ -138,6 +126,13 @@ class App extends React.Component {
           
         }
     }
+
+    fetch(process.env.REACT_APP_API_SITE +'/').then(response =>{
+      return response.json();
+    })
+    .then(log =>{
+      console.log(log);
+    })
       
   }
 

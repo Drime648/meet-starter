@@ -45,9 +45,11 @@ class signIn extends React.Component {
                 console.log(data);
                 // signCheck = data;
                 if(data !== 'fail'){
+                    this.props.keyChange(data)
                     this.props.setUser(this.state.signInUser);
                     this.props.onRouteChange('loading');
-                    this.props.keyChange(data)
+                    
+                    console.log(data);
                 } else {
                     this.setState({load: false})
                     this.setState({failed: true});

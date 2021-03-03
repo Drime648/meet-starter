@@ -52,9 +52,9 @@ class App extends React.Component {
         {this.state.route === 'home' 
           ? <Home userName = {this.state.userName} onRouteChange = {this.onRouteChange} setUser = {this.setUser} apikey = {this.state.apikey}/>
           : (this.state.route === 'signin')
-            ? <SignIn onRouteChange = {this.onRouteChange} setUser = {this.setUser} apikey = {this.state.apikey} keyChange = {this.state.keyChange}/>
+            ? <SignIn onRouteChange = {this.onRouteChange} setUser = {this.setUser} apikey = {this.state.apikey} keyChange = {this.keyChange}/>
             : (this.state.route === 'register')
-              ? <Register onRouteChange = {this.onRouteChange} setUser = {this.setUser} keyChange = {this.state.keyChange}/>
+              ? <Register onRouteChange = {this.onRouteChange} setUser = {this.setUser} keyChange = {this.keyChange}/>
               : (this.state.route === 'loading')
                 ? <Loading onRouteChange = {this.onRouteChange}/>
                 : <EventForm onRouteChange = {this.onRouteChange} userName = {this.state.userName} apikey = {this.state.apikey}/>

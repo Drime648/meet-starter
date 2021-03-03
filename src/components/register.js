@@ -37,8 +37,8 @@ class register extends React.Component{
             })
             .then(data => {
                 if(data !== 'fail'){
-                    this.props.setUser(this.state.registerUser);
                     this.props.keyChange(data);
+                    this.props.setUser(this.state.registerUser);
                     this.props.onRouteChange('loading');
                 } else {
                     this.setState({load: false})
