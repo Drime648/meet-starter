@@ -18,7 +18,8 @@ class TaskCard extends React.Component {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify({
                 id: this.props.id,
-                key: this.props.apikey
+                key: this.props.apikey,
+                username: this.props.username
             })
         }).then(response =>{
             return response.json();

@@ -104,9 +104,6 @@ class App extends React.Component {
     this.setState({time: new Date()});
     var day = this.state.time.getDay();
     var array = this.state.events;
-    // console.log(this.state.time.getTime());
-    // var d = new Date();
-    // var present = d.getTime();
 
     for(var i =0; i < array.length; i++){
       if((day === 0 && array[i].sun) ||
@@ -119,8 +116,6 @@ class App extends React.Component {
           //check event times
           if(array[i].actiontime.slice(0, 5) === this.state.time.toTimeString().slice(0, 5)){
             window.open(array[i].url);
-            // console.log(array[i].password);
-            // copy(array[i].password);
           }
 
           
@@ -163,7 +158,7 @@ class App extends React.Component {
                       onChange = {this.onTaskChange}
                       >
                   </input>
-                  <TaskList apikey = {this.state.apikey} tasks = {this.state.tasks} onRouteChange = {this.props.onRouteChange}/>
+                  <TaskList apikey = {this.state.apikey} tasks = {this.state.tasks} onRouteChange = {this.props.onRouteChange} username = {this.state.userName}/>
 
                 </span>
               </ul>
@@ -175,7 +170,7 @@ class App extends React.Component {
               </div>
               <SearchBox searchChange = {this.onSearchChange}/>
               <Scroll>
-                <EventCardList apikey = {this.state.apikey} events = {filteredEvents} onRouteChange = {this.props.onRouteChange}/>
+                <EventCardList apikey = {this.state.apikey} events = {filteredEvents} username = {this.state.userName} onRouteChange = {this.props.onRouteChange}/>
               </Scroll>
 
             </div>
