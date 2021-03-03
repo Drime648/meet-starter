@@ -19,9 +19,13 @@ class App extends React.Component {
       day: '',
       events: [],
       time: new Date(),
-      addEvent: 'false'
+      apikey: ''
     }
 
+  }
+
+  keyChange = (key) => {
+    this.setState({apikey: key});
   }
 
 
@@ -46,14 +50,14 @@ class App extends React.Component {
 
         
         {this.state.route === 'home' 
-          ? <Home userName = {this.state.userName} onRouteChange = {this.onRouteChange} setUser = {this.setUser}/>
+          ? <Home userName = {this.state.userName} onRouteChange = {this.onRouteChange} setUser = {this.setUser} apikey = {this.state.apikey}/>
           : (this.state.route === 'signin')
-            ? <SignIn onRouteChange = {this.onRouteChange} setUser = {this.setUser}/>
+            ? <SignIn onRouteChange = {this.onRouteChange} setUser = {this.setUser} apikey = {this.state.apikey} keyChange = {this.state.keyChange}/>
             : (this.state.route === 'register')
-              ? <Register onRouteChange = {this.onRouteChange} setUser = {this.setUser}/>
+              ? <Register onRouteChange = {this.onRouteChange} setUser = {this.setUser} keyChange = {this.state.keyChange}/>
               : (this.state.route === 'loading')
                 ? <Loading onRouteChange = {this.onRouteChange}/>
-                : <EventForm onRouteChange = {this.onRouteChange} userName = {this.state.userName}/>
+                : <EventForm onRouteChange = {this.onRouteChange} userName = {this.state.userName} apikey = {this.state.apikey}/>
         }
         
 

@@ -17,7 +17,8 @@ class TaskCard extends React.Component {
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
             body: JSON.stringify({
-                id: this.props.id
+                id: this.props.id,
+                key: this.props.apikey
             })
         }).then(response =>{
             return response.json();

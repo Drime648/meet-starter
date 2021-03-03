@@ -20,7 +20,8 @@ class App extends React.Component {
       time: new Date(),
       searchField: '',
       taskField: '',
-      tasks: []
+      tasks: [],
+      apikey: this.props.apikey
     }
   }
 
@@ -36,7 +37,8 @@ class App extends React.Component {
                 referrerPolicy: 'no-referrer',
                 body: JSON.stringify({
                     username: this.state.userName,
-                    task: this.state.taskField
+                    task: this.state.taskField,
+                    key: this.state.apikey
                     
                 })
             })
@@ -75,7 +77,7 @@ class App extends React.Component {
     // console.log(this.state.userName);
     // console.log(' is the user name');
     // console.log(this.state.day);
-    fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName + '/' + process.env.REACT_APP_KEY).then(response =>{
+    fetch(process.env.REACT_APP_API_SITE +'/getprofile/' + this.state.userName + '/' + this.state.apikey).then(response =>{
       return response.json();
     })
     .then(eventData =>{
@@ -83,7 +85,7 @@ class App extends React.Component {
       console.log(eventData);
     })
 
-    fetch(process.env.REACT_APP_API_SITE +'/getTasks/' + this.state.userName).then(response => {
+    fetch(process.env.REACT_APP_API_SITE +'/getTasks/' + this.state.userName + '/' + this.state.apikey).then(response => {
       return response.json();
     })
     .then(taskData => {
@@ -166,7 +168,7 @@ class App extends React.Component {
                       onChange = {this.onTaskChange}
                       >
                   </input>
-                  <TaskList tasks = {this.state.tasks} onRouteChange = {this.props.onRouteChange}/>
+                  <TaskList apikey = {this.state.apikey} tasks = {this.state.tasks} onRouteChange = {this.props.onRouteChange}/>
 
                 </span>
               </ul>
@@ -178,7 +180,7 @@ class App extends React.Component {
               </div>
               <SearchBox searchChange = {this.onSearchChange}/>
               <Scroll>
-                <EventCardList events = {filteredEvents} onRouteChange = {this.props.onRouteChange}/>
+                <EventCardList apikey = {this.state.apikey} events = {filteredEvents} onRouteChange = {this.props.onRouteChange}/>
               </Scroll>
 
             </div>

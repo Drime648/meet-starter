@@ -30,15 +30,15 @@ class register extends React.Component{
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     userName: this.state.registerUser,
-                    password: this.state.registerPassword,
-                    key: process.env.REACT_APP_KEY
+                    password: this.state.registerPassword
                 })
             }).then(res => {
                 return res.json()
             })
             .then(data => {
-                if(data === 'success'){
+                if(data !== 'fail'){
                     this.props.setUser(this.state.registerUser);
+                    this.props.keyChange(data);
                     this.props.onRouteChange('loading');
                 } else {
                     this.setState({load: false})

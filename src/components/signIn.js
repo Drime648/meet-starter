@@ -35,8 +35,7 @@ class signIn extends React.Component {
                 referrerPolicy: 'no-referrer',
                 body: JSON.stringify({
                     userName: this.state.signInUser,
-                    password: this.state.signInPassword,
-                    key: process.env.REACT_APP_KEY
+                    password: this.state.signInPassword
                 })
             })
             .then(response => {
@@ -45,9 +44,10 @@ class signIn extends React.Component {
             .then(data => {
                 console.log(data);
                 // signCheck = data;
-                if(data === 'success'){
+                if(data !== 'fail'){
                     this.props.setUser(this.state.signInUser);
                     this.props.onRouteChange('loading');
+                    this.props.keyChange(data)
                 } else {
                     this.setState({load: false})
                     this.setState({failed: true});

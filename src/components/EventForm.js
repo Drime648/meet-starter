@@ -95,7 +95,7 @@ class EventForm extends React.Component {
                     fri: this.state.fri,
                     sat: this.state.sat,
                     sun: this.state.sun,
-                    key: process.env.REACT_APP_KEY
+                    key: this.props.apikey
 
                 })
             })
