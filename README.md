@@ -1,5 +1,7 @@
 # meet-starter
 
+This is a web app where you can schedule meetings so that they start automatically at the designated time. I made this mostly for online school, so the web app will start your online school meetings automatically so that you will never be late for school.
+
 First register and make an account.
 Then, click on the (+) to add a new event.
 In the URL box, you can add the meeting url. The URL should look something like this: 
