@@ -1,6 +1,6 @@
 # meet-starter
 
-#Currently inactive because Heroku isn't free anymore, and there is no use for this b/c online school is over
+## Currently inactive because Heroku isn't free anymore, and there is no use for this b/c online school is over
 
 This is a web app where you can schedule meetings so that they start automatically at the designated time. I made this mostly for online school, so the web app will start your online school meetings automatically so that you will never be late for school.
 
